@@ -1,0 +1,14 @@
+[Unit]
+Description=DIYs some cloud-init configuration
+Before=zincati.service
+ConditionPathExists=|!/etc/.cloud-init-finished
+
+[Service]
+Type=oneshot
+ExecStartPre=mkdir -p /mnt/cloud-init
+ExecStartPre=mount /dev/sr1 /mnt/cloud-init
+ExecStart=awk '/hostname/ { print $NF >"/etc/hostname" }' /mnt/cloud-init/user-data
+ExecStart=touch /etc/.cloud-init-finished
+
+[Install]
+WantedBy=multi-user.target
