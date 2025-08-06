@@ -5,7 +5,7 @@ set -ouex pipefail
 ### Install packages
 
 # this installs a package from fedora repos
-dnf5 install -y python3 python3-libselinux python3-libsemanage mosh
+dnf5 install -y python3 python3-libselinux python3-libsemanage man-db mosh yq
 
 # Use a COPR Example:
 #
@@ -20,5 +20,3 @@ rsync -rvK /ctx/system_files/etc/ /etc/
 
 systemctl enable cloud-init-custom.service
 systemctl enable tailscaled.service
-
-firewall-cmd --add-service=mosh --permanent
