@@ -5,7 +5,7 @@ set -ouex pipefail
 ### Install packages
 
 # this installs a package from fedora repos
-dnf5 install -y python3 python3-libselinux python3-libsemanage
+dnf5 install -y python3 python3-libselinux python3-libsemanage mosh
 
 # Use a COPR Example:
 #
