@@ -20,3 +20,5 @@ rsync -rvK /ctx/system_files/etc/ /etc/
 
 systemctl enable cloud-init-custom.service
 systemctl enable tailscaled.service
+
+firewall-cmd --add-service=mosh --permanent
