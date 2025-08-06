@@ -19,3 +19,4 @@ rsync -rvK /ctx/system_files/etc/ /etc/
 #### Example for enabling a System Unit File
 
 systemctl enable cloud-init-custom.service
+systemctl enable tailscaled.service
