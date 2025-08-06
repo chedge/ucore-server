@@ -20,5 +20,3 @@ rsync -rvK /ctx/system_files/etc/ /etc/
 
 systemctl enable cloud-init-custom.service
 systemctl enable tailscaled.service
-
-sed -i -e '/<service name="cockpit"\/>/a\' -e '  <service name="mosh"\/>' /etc/firewalld/zones/FedoraServer.xml
