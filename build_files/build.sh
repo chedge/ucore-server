@@ -5,7 +5,7 @@ set -ouex pipefail
 ### Install packages
 
 # this installs a package from fedora repos
-dnf5 install -y atuin borgbackup borgmatic distrobox langpacks-en python3 python3-firewall python3-libselinux python3-libsemanage man-db mosh yq zsh
+dnf5 install -y atuin borgbackup borgmatic distrobox gdu langpacks-en python3 python3-firewall python3-libselinux python3-libsemanage man-db mosh yq zsh
 
 # Use a COPR Example:
 #
