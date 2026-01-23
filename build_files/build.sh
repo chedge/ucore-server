@@ -16,6 +16,12 @@ dnf5 install -y atuin borgbackup borgmatic distrobox gdu langpacks-en python3 py
 
 rsync -rvK /ctx/system_files/etc/ /etc/
 
+NODEEXPORTERURL="$(curl -sL https://api.github.com/repos/prometheus/node_exporter/releases/latest | jq -r '.assets[].browser_download_url' | grep 'linux-amd64')"
+NODEEXPORTERRELEASE="$(basename ${NODEEXPORTERURL} | rev | cut -d'.' -f 3- | rev)"
+curl -sL -o /tmp/node_exporter.tar.gz "${NODEEXPORTERURL}"
+tar -C /usr/bin/ -zxvf /tmp/node_exporter.tar.gz "${NODEEXPORTERRELEASE}/node_exporter" --strip-components 1
+echo 'u node-exp - -' > /usr/lib/sysusers.d/node-exp.conf
+
 #### Example for enabling a System Unit File
 
 systemctl enable cloud-init-custom.service
