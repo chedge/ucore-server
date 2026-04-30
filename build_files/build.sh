@@ -26,3 +26,8 @@ echo 'u node-exp - -' > /usr/lib/sysusers.d/node-exp.conf
 
 systemctl enable cloud-init-custom.service
 systemctl enable tailscaled.service
+
+
+#### Copy Fail mitigation until the move to Fedora 44/kernel 6.19.12
+echo "install algif_aead /bin/false" > /etc/modprobe.d/disable-algif.conf
+rmmod algif_aead 2>/dev/null || true
