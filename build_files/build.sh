@@ -15,6 +15,7 @@ dnf5 install -y atuin borgbackup borgmatic btop distrobox gdu langpacks-en pytho
 # dnf5 -y copr disable ublue-os/staging
 
 rsync -rvK /ctx/system_files/etc/ /etc/
+rsync -rvK /ctx/system_files/usr/ /usr/
 
 NODEEXPORTERURL="$(curl -sL https://api.github.com/repos/prometheus/node_exporter/releases/latest | jq -r '.assets[].browser_download_url' | grep 'linux-amd64')"
 NODEEXPORTERRELEASE="$(basename ${NODEEXPORTERURL} | rev | cut -d'.' -f 3- | rev)"
@@ -29,5 +30,4 @@ systemctl enable tailscaled.service
 
 
 #### Copy Fail mitigation until the move to Fedora 44/kernel 6.19.12
-echo "install algif_aead /bin/false" > /etc/modprobe.d/disable-algif.conf
-rmmod algif_aead 2>/dev/null || true
+#### RHEL/bootc specific mitigation: added kernel argument via /usr/lib/bootc/kargs.d
