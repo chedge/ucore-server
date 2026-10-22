@@ -4,6 +4,8 @@ set -ouex pipefail
 
 ### Install packages
 
+dnf5 upgrade -y
+
 # this installs a package from fedora repos
 dnf5 install -y atuin borgbackup borgmatic btop distrobox gdu langpacks-en python3 python3-firewall python3-libselinux python3-libsemanage man-db mosh yq zsh
 
